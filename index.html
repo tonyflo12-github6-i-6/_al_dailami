@@ -4,6 +4,201 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Multipurpose Website with Products </title>
+      <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav {
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #3498db;
+            font-size: 1.2em;
+        }
+
+        .section {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            font-size: 2em;
+            color: #333;
+        }
+
+        .section p {
+            font-size: 1.1em;
+            color: #777;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .products, .videos {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px auto;
+            width: 90%;
+        }
+
+        .product-item, .video-item {
+            background-color: white;
+            width: 30%;
+            margin-bottom: 20px;
+            box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .product-item img, .video-item iframe {
+            width: 100%;
+            height: 200px;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .product-item h3, .video-item h3 {
+            font-size: 1.5em;
+            margin: 15px 0;
+        }
+
+        .testimonials {
+            background-color: #f1f1f1;
+            padding: 40px;
+        }
+
+        .testimonial-item {
+            background-color: white;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        .payment-form {
+            display: none;
+            background-color: #eef;
+            padding: 30px;
+            text-align: center;
+        } 
+
+        .login-section, .signup-section {
+            background-color: #eef;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .login-section input, .signup-section input {
+            margin: 10px;
+            padding: 10px;
+            width: 250px;
+        }
+
+        .social-login {
+            margin: 20px;
+        }
+
+        .social-login button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        .slider-container {
+            width: 80%;
+            max-width: 700px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin: 0 auto;
+            margin-top: 30px;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            transition: opacity 1s;
+            position: relative;
+        }
+
+        .slide img, .slide iframe {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .slide .caption {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        .dots {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+        }
+
+        .dot {
+            height: 10px;
+            width: 10px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+
+        .dot.active {
+            background-color: #717171;
+        }
+      </style>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -281,40 +476,55 @@
 <section id="products" class="section">
     <h2>Our Products</h2>
     <div class="products">
-        <!-- Product 1: Women's Watch -->
-        <div class="product-item">
-            <img src="https://images.pexels.com/photos/4111503/pexels-photo-4111503.jpeg" alt="Women's Watch">
-            <h3>Women's Watch</h3>
-            <p>Elegant women's watch with a stainless steel bracelet and classic design.</p>
-            <button class="order-button" onclick="showPaymentForm()">Order No
+       <!-- Slider Section -->
+    <div class="slider-container">
+        <div class="slides">
+            <div class="slide">
+                <img src="https://images.pexels.com/photos/2526129/pexels-photo-2526129.jpeg" alt="Coca-Cola Ad">
+                <div class="caption">Coca-Cola - Refreshing the world</div>
+            </div>
+            <div class="slide">
+                <img src="https://images.pexels.com/photos/3825381/pexels-photo-3825381.jpeg" alt="Nike Ad">
+                <div class="caption">Nike - Just Do It</div>
+            </div>
+            <div class="slide">
+                <img src="https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg" alt="Apple Ad">
+                <div class="caption">Apple - Think Different</div>
+            </div>
+            <div class="slide">
+                <img src="https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg" alt="Samsung Ad">
+                <div class="caption">Samsung - Imagine the Future</div>
+            </div>
+            <!-- YouTube Video Ad Slide -->
+            <div class="slide">
+                <iframe width="100%" height="400" src="https://www.youtube.com/embed/MFotOZwb2Ik" 
+                    title="YouTube video player" frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen></iframe>
+                <div class="caption">YouTube Video Ad</div>
+            </div>
         </div>
-       <!-- Product 2: Women's Watch -->
-        <div class="product-item">
-            <img src="https://images.pexels.com/photos/1538853/pexels-photo-1538853.jpeg" alt="Women's Watch">
-            <h3>Women's Watch</h3>
-            <p>Elegant women's watch with a stainless steel bracelet and classic design.</p>
-            <button class="order-button" onclick="showPaymentForm()">Order Now
-        </div>
-        <!-- Product 3: Men's Jacket -->
-        <div class="product-item">
-            <img src="https://images.unsplash.com/photo-1506031549314-bf8a6f69d8c3?crop=entropy&cs=tinysrgb&fit=max&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fG1lbnxlbnwwfHx8fDE2NTY1NzY2&ixlib=rb-1.2.1&q=80&w=400" alt="Men's Jacket">
-            <h3>Men's Jacket</h3>
-            <p>Comfortable and stylish men's jacket, ideal for casual and outdoor wear.</p>
-            <button class="order-button" onclick="showPaymentForm()">Order Now
-        </div>
-        <!-- Product 4: Women's Dress -->
-        <div class="product-item">
-            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?crop=entropy&cs=tinysrgb&fit=max&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fG1lbmJvfGVufDB8fHx8MTY1NzEwNzY1&ixlib=rb-1.2.1&q=80&w=400" alt="Women's Dress">
-            <h3>Women's Dress</h3>
-            <p>Chic and elegant women's dress, perfect for formal events or special occasions.</p>
-            <button class="order-button" onclick="showPaymentForm()">Order Now
-        </div>
-               <!-- Product 5: Men's Shoes -->
-        <div class="product-item">
-            <img src="https://images.pexels.com/photos/414779/pexels-photo-414779.jpeg" alt="Men's Shoes">
-            <h3>Men's Shoes</h3>
-            <p>High-quality men's shoes with a sleek design and durable material. Suitable for everyday wear.</p>
-              <button class="order-button" onclick="showPaymentForm()">Order Now</button>
+         <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.style.transform = `translateX(${(i - index) * 100}%)`;
+            });
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        // Change slide every 10 Seconds  (10 Seconds)
+        setInterval(Seconds, 10);
               <!-- Payment Form -->
 <div id="payment-form" class="payment-form">
     <h2>Payment Information</h2>
@@ -375,39 +585,16 @@
         <p>- Client 3</p>
     </div>
 </section>
-<!-- Footer Section with Login, Signup, and Contact -->
-<footer>
-    <div style="text-align: center;">
-        <!-- Login / Signup Section #black-->
-<section id="login-signup" class="login-signup-form" style="text-align: center; background-color:mintcream; padding: 20px;">
-    <h2>Login / Signup</h2>
-    <form action="/login" method="post">
-        <input type="email" placeholder="Email" required><br>
-        <input type="password" placeholder="Password" required><br>
-        <button type="submit">Login</button>
-        <p>or</p>
-        <button>Sign in with Facebook</button>
-        <button>Sign in with Google</button>
-    </form>
-</section>
 
 <!-- Contact Information Section -->
-<section id="contact" style="background-color:white; padding: 20px; text-align: left; position: relative;">
+<section id="contact" style="background-color:black; padding: 20px; text-align: left; position: relative;">
     <h2>Contact Us</h2>
     <p>Name: Αℓi мσнαєɒ  Αℓ _ Ɒαiℓαмi </p>
     <p>Phone: +967 770 744 273</p>
     <p>Email: ‏bxvxksbwidvdid@gmail.com‏</p>
 
      <div class="form">
-                    <h2>Login Here</h2>
-                    <input type="email" name="email" placeholder="Enter Email Here">
-                    <input type="password" name="" placeholder="Enter Password Here">
-                    <button class="btnn"><a href="#">Login</a></button>
-
-                    <p class="link">Don't have an account<br>
-                    <a href="#">Sign up </a> here</a></p>
-                    <p class="liw">Log in with</p>
-
+                    
                     <div class="icons">
                         <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
                         <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
