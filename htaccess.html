@@ -1,30 +1,37 @@
 
-<DirectoryIndex index.html
-
-# إعادة توجيه الأخطاء 404 إلى صفحة مخصصة (اختياري)
-ErrorDocument 404 /404.html
-
-     
 <VirtualHost *:80>
-    <DocumentRoot /var/www/html
+    # اسم السيرفر (الموقع)
     ServerName example.com
 
-    # معالجة الأخطاء 404
+    # دليل الجذر للموقع (مكان ملفات الموقع)
+    DocumentRoot /var/www/html
+
+    # استخدام ملف index.html كملف افتراضي
+    DirectoryIndex index.html
+
+    # إعادة توجيه الأخطاء 404 إلى صفحة مخصصة
     ErrorDocument 404 /404.html
 
-    # التأكد من السماح للوصول إلى الملفات
+    # إعدادات الدليل الجذر (التحكم في الأذونات)
     <Directory /var/www/html>
-        <Options Indexes FollowSymLinks
+        Options Indexes FollowSymLinks
         AllowOverride All
         Require all granted
     </Directory>
 </VirtualHost>
 
-<Terminal> 
-<sudo find /var/www/html -type f -exec chmod 644 {} \;
+# إعدادات الأذونات على الخادم
+# تعيين الأذونات على الملفات (644) والمجلدات (755)
+<Directory /var/www/html>
+    # تعيين الأذونات على الملفات
+    <FilesMatch "\.(html|php|css|js|jpg|png)$">
+        Require all granted
+        FileETag None
+    </FilesMatch>
 
-# تعيين الأذونات على المجلدات (755)
-sudo find /var/www/html -type d -exec chmod 755 {} \;
-
-sudo systemctl restart apache2
-sudo systemctl restart httpd
+    # تعيين الأذونات على المجلدات
+    <IfModule mod_autoindex.c>
+        Options Indexes FollowSymLinks
+        IndexOptions FancyIndexing HTMLTable
+    </IfModule>
+</Directory>
