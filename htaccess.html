@@ -1,0 +1,30 @@
+
+<DirectoryIndex index.html
+
+# إعادة توجيه الأخطاء 404 إلى صفحة مخصصة (اختياري)
+ErrorDocument 404 /404.html
+
+     
+<VirtualHost *:80>
+    <DocumentRoot /var/www/html
+    ServerName example.com
+
+    # معالجة الأخطاء 404
+    ErrorDocument 404 /404.html
+
+    # التأكد من السماح للوصول إلى الملفات
+    <Directory /var/www/html>
+        <Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+</VirtualHost>
+
+<Terminal> 
+<sudo find /var/www/html -type f -exec chmod 644 {} \;
+
+# تعيين الأذونات على المجلدات (755)
+sudo find /var/www/html -type d -exec chmod 755 {} \;
+
+sudo systemctl restart apache2
+sudo systemctl restart httpd
