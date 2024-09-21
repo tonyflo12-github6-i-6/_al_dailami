@@ -348,19 +348,7 @@
   </div><a href="videos"
   </a> 
 
-  <!-- Start Button (Right) -->
-  <div class="start-button" style="text-align: center; margin-top: 30px;">
-    <button onclick="startAction()" style="background-color: #28a745; border: none; color: white; padding: 15px 30px; font-size: 16px; border-radius: 8px; cursor: pointer; transition: background-color 0.3s;">
-        Start
-    </button>
-</div>
 
-<script>
-    function startAction() {
-        alert("Start button clicked!");
-    }
-</script>
-      
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -580,6 +568,14 @@
             alert("Start button clicked!");
         }
     </script>
+   
+    <script>
+  function toggleMenu() {
+    var menu = document.getElementById("dropdown-menu");
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+  }
+</script>
+
 
 <!-- Products Section -->
 <section id="products" class="section">
