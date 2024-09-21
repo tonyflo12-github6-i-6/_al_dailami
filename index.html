@@ -352,6 +352,50 @@
   <div class="start-button">
     <button onclick="startAction()">Start</button>
   </div> 
+      
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        /* تنسيق الدائرة */
+        .login-circle {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #ffffff; /* خلفية بيضاء */
+            color: #000000; /* لون الأيقونة أسود */
+            text-align: center;
+            line-height: 60px;
+            text-decoration: none;
+            font-size: 30px;
+            position: fixed; /* تثبيت العنصر */
+            top: 10px; /* المسافة من أعلى الصفحة */
+            right: 10px; /* المسافة من يمين الصفحة */
+            z-index: 1000; /* يظهر فوق العناصر الأخرى */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* إضافة ظل */
+            transition: background-color 0.3s; /* تأثير الانتقال */
+        }
+        .login-circle:hover {
+            background-color: #f0f0f0; /* تغيير اللون عند التمرير */
+        }
+    </style>
+    <title>Login Button</title>
+</head>
+<body>
+
+    <a href="login.html" class="login-circle">
+        <i class="ri-account-circle-line"></i>
+    </a>
+
+    <!-- محتوى الصفحة هنا -->
+
+</body>
+</html>
+      
 
   <!-- Dropdown Menu (Left) -->
   <div id="dropdown-menu" class="dropdown-menu">
