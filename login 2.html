@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login with Two-Factor Authentication</title>
+    <style>
+        /* تنسيق بسيط */
+        body { font-family: Arial, sans-serif; }
+        .form-section { text-align: center; background-color: mintcream; padding: 20px; max-width: 300px; margin: auto; }
+        #auth-code-section { display: none; } /* إخفاء قسم رمز المصادقة في البداية */
+    </style>
+</head>
+<body>
+
+    <!-- نموذج تسجيل الدخول -->
+    <section class="form-section" id="login-section">
+        <h2>Login</h2>
+        <form id="login-form" onsubmit="handleLogin(event)">
+            <input type="email" id="email" placeholder="Email" required><br><br>
+            <input type="password" id="password" placeholder="Password" required><br><br>
+            <button type="submit">Login</button>
+        </form>
+    </section>
+
+   <!-- قسم رمز المصادقة -->
+    <section class="form-section" id="auth-code-section">
+        <h2>Enter Authentication Code</h2>
+        <p>Your authentication code is: <strong id="auth-code"></strong></p>
+        <input type="text" id="auth-code-input" placeholder="Enter Code" required><br><br>
+        <button type="button" onclick="verifyAuthCode()">Verify</button>
+    </section>
+
+    <script>
+        let generatedAuthCode; // تخزين رمز المصادقة المؤقت
+
+        function handleLogin(event) {
+            event.preventDefault(); // منع تحديث الصفحة
+
+            // عرض نموذج رمز المصادقة بعد تسجيل الدخول
+            document.getElementById("login-section").style.display = "none"; // إخفاء نموذج تسجيل الدخول
+            document.getElementById("auth-code-section").style.display = "block"; // عرض قسم رمز المصادقة
+
+            // توليد رمز مصادقة وهمي (في التطبيق الفعلي، يُفترض أن يأتي من الخادم)
+            generatedAuthCode = Math.floor(100000 + Math.random() * 900000);
+            document.getElementById("auth-code").innerText = generatedAuthCode; // عرض رمز المصادقة
+        }
+
+        function verifyAuthCode() {
+            const enteredCode = document.getElementById("auth-code-input").value;
+            
+            // التحقق من صحة الرمز
+            if (parseInt(enteredCode) === generatedAuthCode) {
+                alert("تم التحقق من الرمز بنجاح! سيتم توجيهك إلى الصفحة الرئيسية.");
+                window.location.href = "index.html"; // توجيه المستخدم إلى الصفحة الرئيسية
+            } else {
+                alert("رمز المصادقة غير صحيح. حاول مرة أخرى.");
+            }
+        }
+    </script>
+
+</body>
+</html>
