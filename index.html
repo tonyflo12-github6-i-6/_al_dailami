@@ -599,6 +599,25 @@
             <div class="slide">
                 <img src="https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg" alt="Samsung Ad">
                 <div class="caption">Samsung - Imagine the Future</div>
+                <script>
+// JavaScript لتشغيل الشرائح تلقائيًا
+let currentIndex = 0;
+const slides = document.querySelectorAll('.slide');
+const slideInterval = 5000; // مدة عرض كل شريحة بالمللي ثانية (5 ثواني)
+
+function showSlide(index) {
+    const slidesContainer = document.querySelector('.slides');
+    slidesContainer.style.transform = `translateX(-${index * 100}%)`;
+}
+
+function nextSlide() {
+    currentIndex = (currentIndex + 1) % slides.length;
+    showSlide(currentIndex);
+}
+
+// تشغيل الشرائح بشكل تلقائي
+setInterval(nextSlide, slideInterval);
+                </script>
             </div>
             <!-- YouTube Video Ad Slide -->
             <div class="slide">
