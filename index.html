@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Multipurpose Website with Products </title>
       <style>
+          #news-list {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 10px;
+}
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -776,6 +782,45 @@ oau           currentSlide = (currentSlide + 1) % slides.length;
   </div>
   <div class="footer-bottom">
   </div>
+        <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
+  import { getFirestore, collection, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js";
+
+  // كود الربط الخاص بك (AlDailamiNews)
+  const firebaseConfig = {
+    apiKey: "AIzaSyBFibp5QFXEJv1zT9HlAsgR2hoPy86mzUI",
+    authDomain: "aldailaminews.firebaseapp.com",
+    projectId: "aldailaminews",
+    storageBucket: "aldailaminews.firebasestorage.app",
+    messagingSenderId: "993196117811",
+    appId: "1:993196117811:web:af8ad4734d0fa9aba13846",
+    measurementId: "G-BEWL89Y9B7"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // جلب الأخبار وعرضها
+  const newsContainer = document.getElementById('news-list'); // تأكد من وجود div بهذا الاسم
+
+  const q = query(collection(db, "news"), orderBy("date", "desc"));
+
+  onSnapshot(q, (snapshot) => {
+    newsContainer.innerHTML = ''; 
+    snapshot.forEach((doc) => {
+      const news = doc.data();
+      newsContainer.innerHTML += `
+        <div style="border-bottom:1px solid #ccc; padding:15px; margin-bottom:10px;">
+          <img src="${news.image}" style="width:100%; max-height:300px; object-fit:cover; border-radius:8px;">
+          <h2 style="color:#222;">${news.title}</h2>
+          <p style="color:#555;">${news.content}</p>
+          <small style="color:#999;">${new Date(news.date.seconds * 1000).toLocaleString('ar-YE')}</small>
+        </div>
+      `;
+    });
+  });
+</script>
+
 </footer>
      <p style="text-align: center;">&copy; 2024 Top Corner Store. All rights reserved.</p>
 </footer>
